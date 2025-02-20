@@ -6,9 +6,9 @@ include_once "./api/db.php";
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <style>
-        
-    </style>
+<style>
+
+</style>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,7 +27,7 @@ include_once "./api/db.php";
     <div id="all">
         <div id="title">
             <?=date("Y 月 m 號 l");?>|
-            今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>| 
+            今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>|
             累積瀏覽: <?=qSum("SELECT SUM(total) from total");?>
         </div>
 
