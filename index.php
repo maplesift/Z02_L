@@ -28,7 +28,7 @@ include_once "./api/db.php";
         <div id="title">
             <?=date("Y 月 m 號 l");?>|
             今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>|
-            累積瀏覽: <?=qSum("SELECT SUM(total) from total");?>
+            累積瀏覽: <?=qCol("SELECT SUM(total) from total");?>
         </div>
 
 

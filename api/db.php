@@ -100,7 +100,7 @@ function q($sql){
     $pdo=new PDO($dsn,'root','');
     return $pdo->query($sql)->fetchAll();
 }
-function qSum($sql){
+function qCol($sql){
     $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02_l;";
     $pdo=new PDO($dsn,'root','');
     return $pdo->query($sql)->fetchColumn();
