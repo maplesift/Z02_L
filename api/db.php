@@ -69,9 +69,14 @@ class DB{
         }else{
             //!id: insert into table() values()
             $keys=array_keys($array);
-            $sql = " INSERT INTO $this->table(`".join("`,`",$keys)."`) VALUES('".join("','",$array)."') ";
+            $sql = " INSERT INTO $this->table (`".join("`,`",$keys)."`) VALUES('".join("','",$array)."') ";
         }
+        // echo $sql;
+        // $cols=array_keys($array);
+        // $sql="INSERT INTO $this->table (`".join("`,`",$cols)."`) VALUES('".join("','",$array)."')";
+
             return $this->pdo->exec($sql);
+        // return $this->pdo->exec($sql);
     }
     function count(...$array){
         $sql = "SELECT count(*) FROM $this->table";
@@ -110,6 +115,7 @@ function to($url){
 }
 
 $Total=new DB('total');
+$User=new DB('users');
 // $Total=new DB('total');
 
 

@@ -40,6 +40,7 @@ function reg() {
         pw2: $("#pw2").val(),
         email: $("#email").val()
     }
+    
     // console.log(user);
     if (user.acc == "" || user.pw == "" || user.pw2 == "" || user.email == "") {
         // 檢查 帳密郵件是否為空值

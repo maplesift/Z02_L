@@ -27,9 +27,12 @@
     </table>
     <div class="">
 
-        <button onclick="">註冊</button>
-        <button onclick="">清除</button>
+        <button onclick="login()">登入</button>
+        <button onclick="reset()">清除</button>
         <a href="?do=reg" class="f-r">|尚未註冊</a>
-        <a href="?do=forget" class="f-r">忘記密碼 </a>
+        <a href="?do=forgot" class="f-r">忘記密碼 </a>
     </div>
 </fieldset>
+<script>
+    
+</script>
