@@ -134,7 +134,6 @@ class DB{
         return $this->avg('avg',$col,$where);
     }
     function count($where=[]){
-        
         return $this->math('count','*',$where);
     }
 
@@ -181,12 +180,14 @@ $News=new DB('news');
 $Que=new DB('que');
 $Log=new DB('log');
 
-
+// 如果沒有
 if(!isset($_SESSION['total'])){
+    // 如果有今天的紀錄
     if($Total->count(['date'=>date("Y-m-d")])>0){
     $total=$Total->find(['date'=>date("Y-m-d")]);
         $total['total']++;
         $Total->save($total);
+        // 如果沒有今天的紀錄
     }else{
         $Total->save(['date'=>date("Y-m-d"),'total'=>1]);
     }
