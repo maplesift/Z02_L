@@ -106,13 +106,18 @@ class DB{
     }
     function count(...$array){
         $sql = "SELECT count(*) FROM $this->table";
-        if(!empty($array[0]) && is_array($array[0])){
-            $where= $this->a2s($array[0]);
-            $sql .= " where ".join(" && ",$where);
-        }else{
-            $sql .= $array[0];
-        }if(!empty($array[1])){
-            $sql .= $array[1];
+        if(!empty($array[0])){
+            if(is_array($array[0])){
+                $where= $this->a2s($array[0]);
+                $sql .= " where ".join(" && ",$where);
+            }else{
+                $sql .= $array[0];
+            }
+            
+        }
+        if(!empty($array[1])){
+        
+        $sql .= $array[1];
         }
         return $this->pdo->query($sql)->fetchColumn();
     }
@@ -142,6 +147,7 @@ function to($url){
 
 $Total=new DB('total');
 $User=new DB('users');
+$News=new DB('news');
 // $Total=new DB('total');
 
 
