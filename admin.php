@@ -40,11 +40,11 @@ include_once "./api/db.php";
         </div>
         <div id="mm">
             <div class="hal" id="lef">
+                <a class="blo" href="?do=admin">帳號管理</a>
                 <a class="blo" href="?do=po">分類網誌</a>
-                <a class="blo" href="?do=news">最新文章</a>
-                <a class="blo" href="?do=pop">人氣文章</a>
-                <a class="blo" href="?do=know">講座訊息</a>
-                <a class="blo" href="?do=que">問卷調查</a>
+                <a class="blo" href="?do=news">最新文章管理</a>
+                <a class="blo" href="?do=know">講座管理</a>
+                <a class="blo" href="?do=que">問卷管理</a>
             </div>
             <div class="hal" id="main">
                 <div>
@@ -84,7 +84,7 @@ include_once "./api/db.php";
         <div id="bottom">
             本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2012健康促進網社群平台 All Right Reserved
             <br>
-            服務信箱：health@test.labor.gov.tw<img src="./home_files/02B02.jpg" width="45">
+            服務信箱：health@test.labor.gov.tw<img src="./icon/02B02.jpg" width="45">
         </div>
     </div>
 

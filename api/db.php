@@ -29,16 +29,42 @@ class DB{
     
     function all(...$array){
         $sql = "SELECT * FROM $this->table";
-        if(!empty($array[0]) && is_array($array[0])){
-            $where= $this->a2s($array[0]);
-            $sql .= " where ".join(" && ",$where);
-        }else{
-            $sql .= $array[0];
-        }if(!empty($array[1])){
-            $sql .= $array[1];
+        if(!empty($array[0])){
+            if(is_array($array[0])){
+                $where= $this->a2s($array[0]);
+                $sql .= " where ".join(" && ",$where);
+            }else{
+                $sql .= $array[0];
+            }
+            
         }
-        return $this->fetchAll($sql);
-    }
+        if(!empty($array[1])){
+        
+        $sql .= $array[1];
+        }
+    return $this->fetchAll($sql);
+    } 
+    
+    // function all(...$arg){
+    //     $sql="SELECT * FROM $this->table ";
+    //     if(!empty($arg[0])){
+    //         if(is_array($arg[0])){
+
+    //             $where=$this->a2s($arg[0]);
+    //             $sql=$sql . " WHERE ". join(" && ",$where);
+    //         }else{
+    //             // $sql=$sql.$arg[0];
+    //             $sql .= $arg[0];
+    //         }
+    //     }
+    //     if(!empty($arg[1])){
+    //         $sql=$sql . $arg[1];
+    //     }
+    //     // echo "all:".$sql;
+    //     return $this->fetchAll($sql);
+    // }
+
+
     function find($id){
         $sql = "SELECT * FROM $this->table";
         if(is_array($id)){

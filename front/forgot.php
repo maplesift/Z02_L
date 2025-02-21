@@ -3,6 +3,9 @@
     margin: auto;
     width: 50%;
 }
+.text-r {
+    color: red;
+}
 </style>
 
 <fieldset>
@@ -20,6 +23,7 @@
             <td><input type="button" value="尋找" onclick="forgot()"></td>
         </tr>
     </table>
+    </fieldset>
     <script>
 function forgot(){
     let email = $("#email").val();
