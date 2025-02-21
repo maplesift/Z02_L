@@ -55,10 +55,11 @@ include_once "./api/db.php";
                         }else {
                             echo "歡迎,{$_SESSION['user']}";
                             echo "<a href='./api/logout.php'><button>登出</button></a>";
-                        }if($_SESSION['user']=='admin'){
-                            echo "<a href='admin.php'><button>管理</button></a>";
+                            if($_SESSION['user']=='admin'){
+                                echo "<a href='admin.php'><button>管理</button></a>";
+                            }
                         }
-
+                            
                             // <button></button>
                         
                         ?>

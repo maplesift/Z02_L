@@ -20,14 +20,14 @@
     border-bottom: #eee;
 }
 
-.texts {}
+
 
 .text {
     width: 100%;
     min-height: 450px;
     border: 1px solid #999;
     display: none;
-    background
+    /* background */
 }
 
 .active {

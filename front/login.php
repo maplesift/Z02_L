@@ -36,31 +36,38 @@ fieldset {
     </div>
 </fieldset>
 <script>
-
 function login() {
     let user = {
         acc: $("#acc").val(),
         pw: $("#pw").val(),
 
     }
-    
-        $.post("./api/chk_acc.php", {
-            acc: user.acc
-        }, function(res) {
-            console.log('chkacc', res);
 
-            if (parseInt(res) != 1) {
-                alert("查無帳號");
-            } else {
-                $.post("./api/chk_pw.php", user, function(res) {
-                    console.log('login', res);
-                    if (parseInt(res) == 1) {
-                        alert("登入成功")
+    $.post("./api/chk_acc.php", {
+        acc: user.acc
+    }, function(res) {
+        console.log('chkacc', res);
+
+        if (parseInt(res) != 1) {
+            alert("查無帳號");
+        } else {
+            $.post("./api/chk_pw.php", user, function(res) {
+                console.log('login', res);
+                if (parseInt(res) == 1) {
+                    alert("登入成功")
+                    if (user.acc == 'admin') {
+                        location.href = 'admin.php';
+                    } else {
+                        location.href = 'index.php';
                     }
-                })
-            }
-        })
-    }
+                } else {
+                    alert("密碼錯誤");
+                    reset();
+                }
+            })
+        }
+    })
+}
 
 
 
