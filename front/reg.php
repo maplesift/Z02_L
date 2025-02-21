@@ -36,6 +36,7 @@ fieldset {
     </div>
 </fieldset>
 <script>
+    
 function reg() {
     let user = {
         acc: $("#acc").val(),

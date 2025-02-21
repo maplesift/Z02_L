@@ -1,17 +1,19 @@
 <style>
-    fieldset{
-        margin: auto;
-        width: 50%;
-    }
-    .text-r{
-        color: red;
-    }
-    .f-r{
-        float: right;
-        margin-left: 3px;
-    }
+fieldset {
+    margin: auto;
+    width: 50%;
+}
+
+.text-r {
+    color: red;
+}
+
+.f-r {
+    float: right;
+    margin-left: 3px;
+}
 </style>
-<fieldset >
+<fieldset>
     <legend>會員登入</legend>
     <span class="text-r">請設定您要註冊的帳號及密碼(最長12個字元)</span>
     <table>
@@ -34,5 +36,38 @@
     </div>
 </fieldset>
 <script>
+
+function login() {
+    let user = {
+        acc: $("#acc").val(),
+        pw: $("#pw").val(),
+
+    }
     
+        $.post("./api/chk_acc.php", {
+            acc: user.acc
+        }, function(res) {
+            console.log('chkacc', res);
+
+            if (parseInt(res) != 1) {
+                alert("查無帳號");
+            } else {
+                $.post("./api/chk_pw.php", user, function(res) {
+                    console.log('login', res);
+                    if (parseInt(res) == 1) {
+                        alert("登入成功")
+                    }
+                })
+            }
+        })
+    }
+
+
+
+
+function reset() {
+    $("#acc").val("");
+    $("#pw").val("");
+
+}
 </script>

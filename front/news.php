@@ -1,1 +1,1 @@
-news
+<h2 class="ct">最新文章</h2>

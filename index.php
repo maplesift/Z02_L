@@ -50,7 +50,20 @@ include_once "./api/db.php";
                 <div>
                     <marquee behavior="" direction="" style="width:72%;">linebank</marquee>
                     <span style="width:25%; display:inline-block;">
-                        <a href="?do=login">會員登入</a>
+                        <?php if(empty($_SESSION['user'])) {
+                            echo "<a href='?do=login'>會員登入</a>";
+                        }else {
+                            echo "歡迎,{$_SESSION['user']}";
+                            echo "<a href='./api/logout.php'><button>登出</button></a>";
+                        }if($_SESSION['user']=='admin'){
+                            echo "<a href='admin.php'><button>管理</button></a>";
+                        }
+
+                            // <button></button>
+                        
+                        ?>
+                        <!-- <a href="?do=login">會員登入</a> -->
+
                     </span>
                     <!-- include -->
                     <?php 
