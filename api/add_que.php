@@ -18,3 +18,4 @@ if(isset($_POST['opt'])){
         ]);
     };
 }
+to("../admin.php?do=que");

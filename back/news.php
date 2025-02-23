@@ -36,7 +36,6 @@ fieldset {
         $pages=ceil($total/$div);
         $now=$_GET['p']??'1';
         $start=($now-1)*3;
-
         $rows=$News->all(" limit $start,$div");
         foreach ($rows as $row) :
         ?>

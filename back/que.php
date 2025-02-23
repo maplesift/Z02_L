@@ -15,10 +15,7 @@ fieldset {
 #opt{
     width: 300px;
 }
-div{
-    font-size: 18px;
-    /* padding: 5px; */
-}
+
 </style>
 
 <fieldset>
