@@ -118,10 +118,8 @@ class DB{
             }else{
                 $sql .= $array[0];
             }
-            
         }
         if(!empty($array[1])){
-        
         $sql .= $array[1];
         }
         return $this->pdo->query($sql)->fetchColumn();

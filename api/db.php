@@ -20,12 +20,13 @@ class DB{
         foreach ($array as $key => $val) {
             $tmp[]="`$key`='$val'";
         }
+        return $tmp;
     }
     function all(...$array){
         $sql = "SELECT * FROM $this->table";
         if(!empty($array[0])){
             if(is_array($array[0])){
-                $where= $this->a2s($array);
+                $where= $this->a2s($array[0]);
                 $sql .= " where ".join(" && ",$where);
             }else{
                 $sql .= $array[0];
@@ -44,7 +45,9 @@ class DB{
             $sql .= " where `id`='$id' ";
         }
         return $this->fetchOne($sql);
-    }
+
+    } 
+
     function del($id){
         $sql = "DELETE FROM $this->table";
         if (is_array($id)) {
@@ -73,7 +76,7 @@ class DB{
         $sql = "SELECT count(*) FROM $this->table";
         if(!empty($array[0])){
             if(is_array($array[0])){
-                $where= $this->a2s($array);
+                $where= $this->a2s($array[0]);
                 $sql .= " where ".join(" && ",$where);
             }else{
                 $sql .= $array[0];
@@ -83,6 +86,8 @@ class DB{
         }
         return $this->pdo->query($sql)->fetchColumn();
     }
+    
+
 }
 // db外
 function q($sql){
@@ -104,9 +109,28 @@ function to($url){
     header("location".$url);
 }
 
+$Total=new DB("total");
+$Que=new DB("que");
+$User=new DB("user");
+$News=new DB("news");
+$Log=new DB("log");
+
 if(!isset($_SESSION['total'])){
-    
-}else{
-    
-}
-$_SESSION['total']=1;
+    $today= date("Y-m-d");
+    $total=$Total->find(['date'=>$today]);
+    // 如果total有值
+    if($total){
+        // 更新今日瀏覽數
+        $total['total']++;
+        $Total->save($total);
+    }else{
+        // 如果total回傳沒有值
+         // 新增當天的紀錄
+        $Total->save(['date'=>$today,'total'=>1]);
+    }
+    $grand_total=$Total->find(['id'=>1]); // 只存一筆累積數據
+    $grand_total['grand_total']++;
+    $Total->save($grand_total);
+    $_SESSION['total']=1;
+} 
+
