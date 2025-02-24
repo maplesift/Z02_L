@@ -38,10 +38,10 @@
 <fieldset style="width: 150px;" class="fld-1">
     <legend>分類網誌</legend>
     <div class="title">
-        <a href="?do=po&type=1" class="type" data-type="1">健康新知</a>
-        <a href="?do=po&type=2" class="type" data-type="2">菸害防治</a>
-        <a href="?do=po&type=3" class="type" data-type="3">癌症防治</a>
-        <a href="?do=po&type=4" class="type" data-type="4">慢性病防治</a>
+        <a href="?do=po&type=1" class="type" >健康新知</a>
+        <a href="?do=po&type=2" class="type" >菸害防治</a>
+        <a href="?do=po&type=3" class="type" >癌症防治</a>
+        <a href="?do=po&type=4" class="type" >慢性病防治</a>
     </div>
 </fieldset>
 <fieldset style="width: 500px;" class="fld-2">
