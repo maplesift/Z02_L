@@ -1,26 +1,27 @@
 <style>
-.type {
-    margin: 10px;
-    display: block;
-    /* vertical-align: top; */
-}
-
-.fld-1 {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.fld-2 {
-    display: inline-block;
-}
-
-.detail {
-    display: none;
-}
-.title{
-    color: blue;
-    cursor: pointer;
-}
+    .type {
+        margin: 10px;
+        display: block;
+        /* vertical-align: top; */
+    }
+    
+    .fld-1 {
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    .fld-2 {
+        display: inline-block;
+    }
+    
+    .detail {
+        display: none;
+    }
+    
+    .title {
+        color: blue;
+        cursor: pointer;
+    }
 </style>
 <?php 
             if(isset($_GET['type'])){
@@ -32,31 +33,33 @@
 ?>
 
 <div>
-    目前位置 : 首頁 > 分類網誌 > <span id="type"><?=$rows[0]['type_tx'];?></span>
+    目前位置 : 首頁 > 分類網誌 > <span id="type">
+        <?=$rows[0]['type_tx'];?>
+    </span>
 </div>
 
 <fieldset style="width: 150px;" class="fld-1">
     <legend>分類網誌</legend>
     <div class="title">
-        <a href="?do=po&type=1" class="type" >健康新知</a>
-        <a href="?do=po&type=2" class="type" >菸害防治</a>
-        <a href="?do=po&type=3" class="type" >癌症防治</a>
-        <a href="?do=po&type=4" class="type" >慢性病防治</a>
+        <a href="?do=po&type=1" class="type">健康新知</a>
+        <a href="?do=po&type=2" class="type">菸害防治</a>
+        <a href="?do=po&type=3" class="type">癌症防治</a>
+        <a href="?do=po&type=4" class="type">慢性病防治</a>
     </div>
 </fieldset>
 <fieldset style="width: 500px;" class="fld-2">
     <legend>文章列表</legend>
 
-        <?php
+    <?php
             //  $type=$_GET['type']??'1';
             if(isset($_GET['type'])):
                 foreach ($rows as $row) :
         
         ?>
-            <div class="r-title">
-                <div class="title"><?=$row['title'];?></div>
-                <div class="detail"><?=nl2br($row['text']);?></div>
-            </div>
+    <div class="r-title">
+        <div class="title"><?=$row['title'];?></div>
+        <div class="detail"><?=nl2br($row['text']);?></div>
+    </div>
     <?php  endforeach;  ?>
     <?php  endif;  ?>
     <div>
@@ -72,7 +75,7 @@
 // })
 
 
-$(".r-title").on("click",function(){
+$(".r-title").on("click", function() {
     $(this).children('.title,.detail').toggle();
 })
 </script>

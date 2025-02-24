@@ -44,7 +44,7 @@ h2{
                     <?=mb_substr($row['text'],0,25);?>
                 </span>
                 <span class="detail">
-                    <h2><?=$News::$type[$row['type']];?></h2>
+                    <h2><?=$row['type_tx'];?></h2>
                     <?=nl2br($row['text']);?>
                 </span>
             </td>
