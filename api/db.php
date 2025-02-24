@@ -103,3 +103,10 @@ function dd($array){
 function to($url){
     header("location".$url);
 }
+
+if(!isset($_SESSION['total'])){
+    
+}else{
+    
+}
+$_SESSION['total']=1;
