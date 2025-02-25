@@ -26,7 +26,7 @@
 			
 			<?=date("Y年m月d日 l");?> 
 			今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>
-			累積瀏覽: <?=$Total->find(['id'=>1])['grand_total'];?>
+			累積瀏覽: <?=qCol("SELECT SUM(total) from total");?>
 			<a href="index.php" style="float: right;">回首頁</a>
 		</div>
             <!-- 00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36 </div> -->

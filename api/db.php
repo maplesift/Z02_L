@@ -128,9 +128,9 @@ if(!isset($_SESSION['total'])){
          // 新增當天的紀錄
         $Total->save(['date'=>$today,'total'=>1]);
     }
-    $grand_total=$Total->find(['id'=>1]); // 只存一筆累積數據
-    $grand_total['grand_total']++;
-    $Total->save($grand_total);
+    // $grand_total=$Total->find(['id'=>1]); // 只存一筆累積數據
+    // $grand_total['grand_total']++;
+    // $Total->save($grand_total);
     $_SESSION['total']=1;
 } 
 

@@ -29,3 +29,19 @@ fieldset {
         </span>
     </div>
 </fieldset>
+<script>
+    function login(){
+       let acc=$("#acc").val("")
+       let pw=$("#pw").val("")
+       $.post("./api/login.php",{acc,pw},function(res){
+            if(res>0){
+                
+
+            }
+       })
+    }
+    function reset(){
+        $("#acc").val("")
+        $("#pw").val("")
+    }
+</script>
