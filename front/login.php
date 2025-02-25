@@ -31,12 +31,30 @@ fieldset {
 </fieldset>
 <script>
     function login(){
-       let acc=$("#acc").val("")
-       let pw=$("#pw").val("")
-       $.post("./api/login.php",{acc,pw},function(res){
-            if(res>0){
-                
-
+        user={
+            acc:$("#acc").val(),
+            pw :$("#pw").val(),
+        }
+       $.post("./api/chk_acc.php",{acc:user.acc},function(res){
+            if(res == 0){
+                alert("查無帳號")
+                reset()
+            }else{
+                $.post("./api/chk_pw.php",user,function(res){
+                    if(res>0){
+                        alert("登入成功")
+                        if(user.acc=='admin'){
+                            // location.href="admin.php"
+                            location.href = 'admin.php';
+                        }else{
+                            location.href="index.php"
+                            
+                        }
+                    }else{
+                        alert("密碼錯誤");
+                        reset()
+                    }
+                })
             }
        })
     }

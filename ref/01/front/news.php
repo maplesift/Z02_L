@@ -78,10 +78,7 @@ $(".like").on("click", function() {
     let id = $(this).data('id');
     let like = $(this).text();
     console.log(like);
-    $.post("./api/like.php", {
-        id
-    }, () => {
-
+    $.post("./api/like.php", {id}, () => {
         if (like == "讚") {
             $(this).text("收回讚")
         } else {

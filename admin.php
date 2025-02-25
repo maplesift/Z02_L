@@ -1,7 +1,6 @@
 ﻿<?php include_once "./api/db.php";
 
 ?>
-
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -14,11 +13,6 @@
     <link href="./css/css.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/js.js"></script>
-    <style>
-        .a{
-            margin: 5px;
-        }
-    </style>
 </head>
 
 <body>
@@ -54,8 +48,8 @@
                 <div>
 					<marquee behavior="" direction="" style="width: 75%;">「請民眾踴躍投稿電子報，讓電子報成為大家相
 					互交流、分享的園地！詳見最新文章」</marquee>
-                    <span style="width:23%; display:inline-block; " >
-                        <?php
+                    <span style="width:23%; display:inline-block;">
+                    <?php
                         if(empty($_SESSION['user'])){
 
                             echo "<a href='?do=login'>會員登入</a>";
@@ -67,17 +61,16 @@
                             }
                         }
                         ?>
-
                         
                     </span>
                     <!-- inclu -->
                     <?php
 					 $do=$_GET['do']??'main';
-					 $file="./front/$do.php";
+					 $file="./back/$do.php";
 					 if(file_exists($file)){
 						include "$file";
 					 }else{
-						include "./front/main.php";
+						include "./back/main.php";
 					 }
 					 ?>
                     <div class="">

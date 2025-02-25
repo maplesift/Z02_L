@@ -106,7 +106,7 @@ function dd($array){
     echo "</pre>";
 }
 function to($url){
-    header("location".$url);
+    header("location:".$url);
 }
 
 $Total=new DB("total");

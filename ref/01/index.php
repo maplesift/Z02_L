@@ -50,7 +50,8 @@ include_once "./api/db.php";
                 <div>
                     <marquee behavior="" direction="" style="width:72%;">linebank</marquee>
                     <span style="width:25%; display:inline-block;">
-                        <?php if(empty($_SESSION['user'])) {
+                        <?php 
+                        if(empty($_SESSION['user'])) {
                             echo "<a href='?do=login'>會員登入</a>";
                         }else {
                             echo "歡迎,{$_SESSION['user']}";
