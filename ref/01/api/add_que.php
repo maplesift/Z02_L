@@ -1,5 +1,5 @@
 <?php include_once "db.php";
-dd($_POST);
+// dd($_POST);  
 if(isset($_POST['subject'])){
     $Que->save([
         'text'=>$_POST['subject'],
