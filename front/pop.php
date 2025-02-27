@@ -1,9 +1,18 @@
 <style>
 .detail {
+    background: rgba(51, 51, 51, 0.8);
+    color: #FFF;
+    height: 400px;
+    width: 400px;
+    position: fixed;
+    top: 28%;
+    left: 45%;
     display: none;
+    z-index: 9999;
+    overflow: auto;
 }
 </style>
-<fieldset >
+<fieldset>
     <legend> 目前位置: 首頁 > 最新文章區</legend>
     <table>
         <tr>
@@ -19,10 +28,10 @@
             $now=$_GET['p']??'1';
             $pages=ceil($total/$div);
             $start=($now-1)*$div;
-            $rows=$News->all(['sh'=>1]," limit $start,$div" );
+            $rows=$News->all(['sh'=>1]," order by `love` desc  limit $start,$div" );
             foreach ($rows as $row) :
                 ?>
-        <tr >
+        <tr>
             <td style="width: 20%;" class="title">
                 <?=$row['title'];?>
             </td>
@@ -33,65 +42,81 @@
                     <?=mb_substr($row['text'],0,20) ;?>
                 </span>
                 <span class="detail ">
+                    <h3 style="color:skyblue;">
+                        <?=$row['type'];?>
+                    </h3>
                     <?=nl2br($row['text']);?>
                 </span>
             </td>
 
-            <td style="width: 20%;">
-            <?php
+            <td style="width: 25%;">
+                <?=$row['love']; ?>個人說讚<span class="good"></span>
+                <?php
             if(isset($_SESSION['user'])){
                 $chk= $Log->find(['news'=>$row['id'],'user'=>$_SESSION['user']]);
                 $love=($chk)?"收回讚":"讚";
                 echo "<a href='#' class='love' data-id='{$row['id']}'>$love</a>";
                 
             } 
-            ?> 
+            ?>
             </td>
             <?php endforeach ;?>
         </tr>
-        </table> 
-        <?php
+    </table>
+    <?php
     if($now-1>0){
-       echo " <a href='?do=news&p=".($now-1)."'> < </a>";
+       echo " <a href='?do=pop&p=".($now-1)."'> < </a>";
         
     }
     for ($i=1; $i <=$pages ; $i++) { 
         $size= ($now==$i)?'26px':'18px';
-        echo " <a href='?do=news&p=$i' style='font-size:$size ;'> $i </a>";
+        echo " <a href='?do=pop&p=$i' style='font-size:$size ;'> $i </a>";
     }
 
     if($now+1<=$pages){
-        echo " <a href='?do=news&p=".($now+1)."'> > </a>";
+        echo " <a href='?do=pop&p=".($now+1)."'> > </a>";
     }
     ?>
 
 </fieldset>
 <script>
-$(".love").on("click",function(){
+$(".love").on("click", function() {
     let love = $(this).text();
     let id = $(this).data('id')
-    console.log(id,love);
-    $.post("./api/love.php",{id},()=>{
-        if(love=="讚"){
-             $(this).text("收回讚")
-        }else{
+    console.log(id, love);
+    $.post("./api/love.php", {
+        id
+    }, () => {
+        if (love == "讚") {
+            $(this).text("收回讚")
+        } else {
             $(this).text("讚")
         }
+        location.reload()
 
     })
-    
+
 })
+$(".r-title").hover(function(){
+  $(this).find(".detail").show()  
+},
+function(){
+      $(this).find(".detail").hide()  
+}
+)
+$(".title").hover(function(){
+  $(this).next().find(".detail").show()  
+},
+function(){
+      $(this).next().find(".detail").hide()  
+}
+)
 
 
-
-
-$(".r-title").on("click", function() {
-    $(this).find(".text,.detail").toggle()
-})
-$(".title").on("click", function() {
-    $(this).next().find(".text,.detail").toggle()
-})
-
-
-
+// $(".r-title").on("click", function() {
+//     $(this).find(".text,.detail").toggle()
+// })
+// $(".title").on("click", function() {
+//     $(this).next().find(".text,.detail").toggle()
+// })
 </script>
