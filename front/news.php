@@ -3,7 +3,7 @@
     display: none;
 }
 </style>
-<fieldset>
+<fieldset >
     <legend> 目前位置: 首頁 > 最新文章區</legend>
     <table>
         <tr>
@@ -14,7 +14,12 @@
             </th>
         </tr>
         <?php 
-            $rows=$News->all();
+            $total=$News->count();
+            $div=5;
+            $now=$_GET['p']??'1';
+            $pages=ceil($total/$div);
+            $start=($now-1)*$div;
+            $rows=$News->all(['sh'=>1]," limit $start,$div" );
             foreach ($rows as $row) :
                 ?>
         <tr >
@@ -45,7 +50,21 @@
             </td>
             <?php endforeach ;?>
         </tr>
-    </table>
+        </table> 
+        <?php
+    if($now-1>0){
+       echo " <a href='?do=news&p=".($now-1)."'> < </a>";
+        
+    }
+    for ($i=1; $i <=$pages ; $i++) { 
+        $size= ($now==$i)?'26px':'18px';
+        echo " <a href='?do=news&p=$i' style='font-size:$size ;'> $i </a>";
+    }
+
+    if($now+1<=$pages){
+        echo " <a href='?do=news&p=".($now+1)."'> > </a>";
+    }
+    ?>
 
 </fieldset>
 <script>
