@@ -37,6 +37,7 @@ if(isset($_GET['type'])){
  <?php   if(isset($_GET['type'])):?>
     <h2><?=$row['type'];?></h2>
     <div>
+    <h3><?=$row['title'];?></h3><hr>
         <?=nl2br($row['text']);?>
     </div>
   <?php  endif;?>
