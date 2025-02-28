@@ -1,5 +1,5 @@
 ﻿
-<? include_once "./api/db.php";
+<?php include_once "./api/db.php";
 ?>
 <!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,7 +11,7 @@
 
 	<title>健康促進網</title>
 	
-	<!-- <link href="./api/db.php" rel="stylesheet" type="text/css"> -->
+
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/js.js"></script>
@@ -30,9 +30,10 @@
 			<?=date("Y年m月d日 l");?> 
 			今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>
 			累積瀏覽: <?=qCol("SELECT SUM(total) from total");?>
+			<a href="index.php" style="float: right;">回首頁</a>
 			 </div>
 		<div id="title2">
-
+<a href="index.php"><img src="./icon/02B01.jpg" title="健康"></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -45,10 +46,21 @@
 			<div class="hal" id="main">
 				<div>
 
-					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+					<span style="width:100%; display:inline-block;">
+						<marquee behavior="" direction="" style="width: 70%;">linebank</marquee>
+						<a href="?do=login" style="width: 23%;">會員登入</a>
 					</span>
 					<div class="">
+						<!-- include -->
+						 <?php
+						 $do=$_GET['do']??'main';
+						 $file="./front/$do.php";
+						 if(file_exists($file)){
+							include $file;
+						 }else{
+							include "./front/main.php";
+						 }
+						 ?>
 					</div>
 				</div>
 			</div>
