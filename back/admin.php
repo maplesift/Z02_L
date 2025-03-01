@@ -35,7 +35,7 @@ fieldset {
             </div>
         </form>
     </div>
-</fieldset>
+
 
 
 <h2>新增會員</h2>
