@@ -1,7 +1,6 @@
 <style>
 fieldset {
     width: 95%;
-
 }
 </style>
 
@@ -34,10 +33,10 @@ fieldset {
                 <td class="ct"><?=$start+$key+1;?></td>
                 <td><?=$row['title'];?></td>
                 <td>
-                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>">
+                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>"<?=($row['sh']==1)?'checked':'';?>>
                 </td>
                 <td>
-                    <input type="checkbox" name="sh[]" value="<?=$row['id'];?>">
+                    <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                 </td>
                 <input type="hidden" name="id[]" value="<?=$row['id']?>">
             </tr>
@@ -45,9 +44,15 @@ fieldset {
             endforeach ;
             ?>
         </table>
+        <div class="ct">
+
+            <input type="submit" value="修改確定">
+        </div>
+        <!-- <input type="reset" value=""> -->
     </form>
-    
-    <?php
+    <div class="ct">
+
+        <?php
     if($now-1>0){
         echo "<a href='?do=news&p=".($now-1)."'> < </a>";
     }
@@ -59,4 +64,5 @@ fieldset {
         echo "<a href='?do=news&p=".($now+1)."'> > </a>";
     }
     ?>
+    </div>
 </fieldset>
