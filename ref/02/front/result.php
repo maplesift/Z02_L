@@ -2,13 +2,14 @@
 $sub=$Que->find($_GET['id']);
 ?>
 <style>
-    .vote{
-        margin: 5px;
-    }
-    .bar{
-        background-color: silver;
-        /* width: 30%; */
-    }
+.vote {
+    margin: 5px;
+}
+
+.bar {
+    background-color: silver;
+    /* width: 30%; */
+}
 </style>
 <fieldset>
     <legend>目前位置: 首頁 > 問卷調查 > <?=$sub['text'];?></legend>
@@ -16,12 +17,12 @@ $sub=$Que->find($_GET['id']);
     <h2><?=$sub['text'];?></h2>
 
     <table>
-    <tr>
-        <td style="width: 20%;"></td>
-        <td style="width: 40%;"></td>
-        <td style="width: 10%;"></td>
-    </tr>
-    <?php
+        <tr>
+            <td style="width: 20%;"></td>
+            <td style="width: 40%;"></td>
+            <td style="width: 10%;"></td>
+        </tr>
+        <?php
     
     $rows=$Que->all(['main_id'=>$_GET['id']]) ;
     
@@ -34,17 +35,17 @@ $sub=$Que->find($_GET['id']);
         $ratemath=  ceil($rate*100);
         ?>
         <tr>
-<td style="width: 40%;">
+            <td style="width: 40%;">
 
-    <?=$row['text'];?>
-</td>
-<td style="width: 40%;">
-    <div class="bar" style="width: <?=$ratemath;?>%"> &nbsp; </div>
-</td>
-        <td>
-            <?=$row['vote']?>票(<?=$ratemath;?>%)
-        </td>
-    </tr>
+                <?=$row['text'];?>
+            </td>
+            <td style="width: 40%;">
+                <div class="bar" style="width: <?=$ratemath;?>%"> &nbsp; </div>
+            </td>
+            <td>
+                <?=$row['vote']?>票(<?=$ratemath;?>%)
+            </td>
+        </tr>
         <?php  } ?>
     </table>
     <div class="ct">
