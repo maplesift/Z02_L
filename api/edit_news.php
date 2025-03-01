@@ -6,7 +6,7 @@ if(isset($_POST['id'])){
             $News->del($id);
         }else{
             $row=$News->find($id);
-            $row['sh']=(isset($_POST['del']) && in_array($id,$_POST['del']))?1:0;
+            $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
             $News->save($row);
         }
     }
