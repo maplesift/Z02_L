@@ -48,7 +48,20 @@
 
 					<span style="width:100%; display:inline-block;">
 						<marquee behavior="" direction="" style="width: 70%;">linebank</marquee>
-						<a href="?do=login" style="width: 23%;">會員登入</a>
+						<span style="width: 23%;">
+
+							<?php 
+						if(isset($_SESSION['user'])){
+							echo "歡迎".$_SESSION['user'];
+							echo "<a href='./api/logout.php'><button>登出</button></a>";
+							if($_SESSION['user']=='admin'){
+								echo "<a href='admin.php'><button>管理</button></a>";
+							}
+						}else{
+						 	echo "<a href='?do=login'><button>會員登入</button></a>";
+						}
+						?>
+						</span>
 					</span>
 					<div class="">
 						<!-- include -->

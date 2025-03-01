@@ -1,6 +1,5 @@
 ﻿
-<? include_once "./api/db.php";
-to("admin.php");
+<?php include_once "./api/db.php";
 ?>
 <!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,6 +10,8 @@ to("admin.php");
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<title>健康促進網</title>
+	
+
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/js.js"></script>
@@ -24,13 +25,15 @@ to("admin.php");
 	<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
 		<div id="title">
-			<?=date("m月 d號 l")?> 
 
-			今日瀏覽: <?= $Total->find(['date'=>date("Y-m-d")])['total'];?>
-			累計瀏覽: <?= qCol("SELECT SUM(total) FROM total"); ?>
+
+			<?=date("Y年m月d日 l");?> 
+			今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?>
+			累積瀏覽: <?=qCol("SELECT SUM(total) from total");?>
+			<a href="index.php" style="float: right;">回首頁</a>
 			 </div>
 		<div id="title2">
-
+<a href="index.php"><img src="./icon/02B01.jpg" title="健康"></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -43,10 +46,34 @@ to("admin.php");
 			<div class="hal" id="main">
 				<div>
 
-					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+					<span style="width:100%; display:inline-block;">
+						<marquee behavior="" direction="" style="width: 70%;">linebank</marquee>
+						<span style="width: 23%;">
+<!-- <button></button> -->
+							<?php 
+						if(isset($_SESSION['user'])){
+							echo "歡迎".$_SESSION['user'];
+							echo "<a href='./api/logout.php'><button>登出</button></a>";
+							if($_SESSION['user']=='admin'){
+								echo "<a href='admin.php'><button>管理</button></a>";
+							}
+						}else{
+						 	echo "<a href='?do=login'><button>會員登入</button></a>";
+						}
+						?>
+						</span>
 					</span>
 					<div class="">
+						<!-- include -->
+						 <?php
+						 $do=$_GET['do']??'main';
+						 $file="./front/$do.php";
+						 if(file_exists($file)){
+							include $file;
+						 }else{
+							include "./front/main.php";
+						 }
+						 ?>
 					</div>
 				</div>
 			</div>
