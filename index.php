@@ -34,7 +34,7 @@
         </div>
         <div id="mm">
             <div class="hal" id="lef">
-                <a class="blo" href="?do=po">分類網誌</a>
+                <a class="blo" href="?do=po&type=1">分類網誌</a>
                 <a class="blo" href="?do=news">最新文章</a>
                 <a class="blo" href="?do=pop">人氣文章</a>
                 <a class="blo" href="?do=know">講座訊息</a>

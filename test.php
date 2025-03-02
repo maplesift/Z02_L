@@ -14,12 +14,13 @@ foreach ($rows as $row) :
 endforeach;
 ?>
 
+<?=$row[''];?>
 
 <?php
 if($now-1>0){
     echo "<a href='?do=news&p=".($now-1)."'> < </a> ";
 }
-for ($i=1; $i < $pages; $i++) { 
+for ($i=1; $i <=$pages; $i++) { 
     $size=($now==$i)?'26px':'18px' ;
     echo "<a href='?do=news&p=$i' style='font-size:$size ;'>$i</a> ";
 }
