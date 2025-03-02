@@ -104,3 +104,9 @@ function dd($array){
 function to($url){
     header("location:".$url);
 }
+
+$User=new DB("user");
+$Que=new DB("que");
+$Log=new DB("log");
+$News=new DB("news");
+$Total=new DB("total");
