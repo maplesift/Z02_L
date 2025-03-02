@@ -26,8 +26,8 @@
         <div id="title">
             <?=date("Y年m月d號 l");?>
             今日瀏覽:<?=$Total->find(['date'=>date("Y-m-d")])['total'];?> |
-			累積瀏覽:<?=qCol("SELECT SUM(total) from total ");?>
-			<a href="index.php" style="float: right;">回首頁</a>
+            累積瀏覽:<?=qCol("SELECT SUM(total) from total ");?>
+            <a href="index.php" style="float: right;">回首頁</a>
         </div>
         <div id="title2">
             <a href="index.php"><img src="./icon/02B01.jpg" title="健康"></a>
@@ -44,9 +44,9 @@
                 <div>
 
                     <span style="width:100%; display:inline-block;">
-						<marquee behavior="" direction="" style="width: 70%;">請民眾踴躍投稿電子報，讓電子報成為大家相
-						互交流、分享的園地！詳見最新文章</marquee>
-						<?php
+                        <marquee behavior="" direction="" style="width: 70%;">請民眾踴躍投稿電子報，讓電子報成為大家相
+                            互交流、分享的園地！詳見最新文章</marquee>
+                        <?php
 						if(isset($_SESSION['user'])){
 							echo "歡迎,".$_SESSION['user'];
 							echo "<a href='./api/logout.php'><button>登出</button></a>";
@@ -58,10 +58,10 @@
 							
 						}
 						?>
-						<!-- <a href=''><button></button></a> -->
+                        <!-- <a href=''><button></button></a> -->
                     </span>
-					<div class="">
-					<?php
+                    <div class="">
+                        <?php
 					$do=$_GET['do']??'main';
 					$file="./back/$do.php";
 					if(file_exists($file)){
