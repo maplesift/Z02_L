@@ -3,7 +3,7 @@ session_start();
 class DB{
     protected $table;
     protected   $pdo;
-    protected   $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z2l4;";
+    protected   $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l4;";
  public function __construct($table) {
     $this->table = $table;
     $this->pdo=new pdo($this->dsn,'root','');
@@ -87,12 +87,12 @@ class DB{
 }
 // DB外
 function qCol($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z2l4;";
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l4;";
     $pdo=new pdo($dsn,'root','');
     return $pdo->query($sql)->fetchColumn();
 }
 function q($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z2l4;";
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l4;";
     $pdo=new pdo($dsn,'root','');
     return $pdo->query($sql)->fetchAll();
 }   
@@ -110,3 +110,16 @@ $Que=new DB("que");
 $Log=new DB("log");
 $News=new DB("news");
 $Total=new DB("total");
+
+if(!isset($_SESSION['total'])){
+
+    $todey=date("Y-m-d");
+    $chk=$Total->find(['date'=>$todey]);
+    if($chk){
+        $chk['total']++;
+        $Total->save($chk);
+    }else{
+        $Total->save(['total'=>1,'date'=>$todey]);
+    }
+    $_SESSION['total']=1;
+}
