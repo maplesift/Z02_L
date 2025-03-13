@@ -20,8 +20,6 @@
     border-bottom: #eee;
 }
 
-
-
 .text {
     width: 100%;
     min-height: 450px;

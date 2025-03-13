@@ -33,10 +33,10 @@
             <td>
                 <?=$row['acc']; ?>
             </td>
-            <td>
-            <?=$row['pw']; ?>
 
-            </td>
+            <td><?=str_repeat("*",strlen($row['pw']));?></td>
+
+
             <td>
                 <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
             </td>

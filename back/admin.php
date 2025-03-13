@@ -24,7 +24,7 @@ fieldset {
             ?>
             <tr>
                 <td><?=$row['acc'];?></td>
-                <td><?=$row['pw'];?></td>
+                <td><?=str_repeat('*',$row['pw']);?></td>
                 <td><input type="checkbox" name="del[]" value="<?=$row['id'];?>"></td>
             </tr>
             <?php  endforeach;?>

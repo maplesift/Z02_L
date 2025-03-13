@@ -3,7 +3,7 @@ session_start();
 class DB{
     protected $table;
     protected $pdo;
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l3;";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l2;";
     
     public function __construct($table) {
         $this->table = $table;
@@ -94,12 +94,12 @@ class DB{
 }
 // db外
 function q($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l3;";
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l2;";
     $pdo=new pdo($dsn,'root','');
     return $pdo->query($sql)->fetchAll();
 }
 function qCol($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l3;";
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l2;";
     $pdo=new pdo($dsn,'root','');
     return $pdo->query($sql)->fetchColumn();
 }
