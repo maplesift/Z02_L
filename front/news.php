@@ -6,6 +6,9 @@
     .table {
         width: 85%;
     }
+    .detail{
+        display: none;
+    }
 </style>
 <fieldset>
     <legend>目前位置:首頁 > 最新文章區</legend>
@@ -28,9 +31,21 @@
 <?php foreach ($rows as $row) :  ?>
 
     
-    <tr>
-        <td><?=$row['title'];?></td>
-        <td><?=mb_substr($row['text'],0,15);?></td>
+    <tr >
+        <td class="t-title">
+            <?=$row['title'];?>
+        </td>
+        <td class="r-title">
+            <span class="title">
+
+                <?=mb_substr($row['text'],0,15);?>
+            </span>
+
+            <span class="detail">
+                
+                <?=nl2br($row['text']);?>
+            </span>
+        </td>
         <?php if(isset($_SESSION['user'])): ?>
         <td style="width: 20%;">
             <?php  
@@ -44,7 +59,19 @@
     <?php endforeach ;?>
         </table>
     </form>
-
+    <?php
+            if($now-1>0){
+                echo "<a href='?do=news&p=".($now-1)."'> < </a>";
+            }
+            for ($i=1; $i <=$pages; $i++) {
+                $size=($now==$i)?'26px':'18px';
+                echo "<a href='?do=news&p=$i' style='font-size:$size ;'> $i </a>";
+            }
+            if($now+1<=$pages){
+                echo "<a href='?do=news&p=".($now+1)."'> > </a>";
+            }
+            
+            ?>
 </fieldset>
 <script>
     $(".love").on("click",function(){
@@ -58,5 +85,11 @@
                 $(this).text("讚")
             }
         })
+    })
+    $(".r-title").on("click",function(){
+        $(this).children(".title,.detail").toggle()
+    })
+    $(".t-title").on("click",function(){
+        $(this).next().children(".title,.detail").toggle()
     })
 </script>
