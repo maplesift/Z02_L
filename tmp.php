@@ -16,5 +16,5 @@ $rows=$table->all();
                 $now=$_GET['p']??1;
                 $pages=ceil($total/$div);
                 $start=($now-1)*$div;
-                $rows=$News->all();
+                $rows=$News->all(" limit $start,$div ");
                 ?>

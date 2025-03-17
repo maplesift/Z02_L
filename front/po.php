@@ -13,6 +13,7 @@
     }
     .type{
         display:block;
+        margin-bottom: 5px;
     }
     .detail{
         display: none;
