@@ -19,3 +19,7 @@ function good(id,type,user)
 		}
 	})
 }
+
+function t(){
+	$.post('./api/ .php',data,function(){})
+}
