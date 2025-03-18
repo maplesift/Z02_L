@@ -11,7 +11,7 @@ class db{
     function a2s($array){
         $tmp=[];
         foreach ($array as $key => $val) {
-            $tmp[]="`$key`='val'";
+            $tmp[]="`$key`='$val'";
         }
         return $tmp;
     }
@@ -91,6 +91,11 @@ function q($sql){
     $pdo =new pdo($dsn,'root','');
     return $pdo->query($sql)->fetchAll();
 }
+function qCol($sql){
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db03_z02l5;";
+    $pdo =new pdo($dsn,'root','');
+    return $pdo->query($sql)->fetchColumn();
+}
 function to($url){
     header("location:".$url);
 }
@@ -98,4 +103,22 @@ function dd($array){
     echo "<pre>";
     print_r($array);
     echo "</pre>";
+}
+
+$Total=new db("total");
+$News=new db("news");
+$Que=new db("que");
+$User=new db("user");
+$Log=new db("log");
+
+if(!isset($_SESSION['total'])){
+    $today=date("Y-m-d");
+    $chk=$Total->find(['date'=>$today]);
+    if($chk){
+        $chk['total']++;
+        $Total->save($chk);
+    }else{
+        $Total->save(['date'=>$today,'total'=>1]);
+    }
+    $_SESSION['total']=1;
 }
